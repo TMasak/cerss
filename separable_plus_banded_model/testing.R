@@ -1,4 +1,4 @@
-setwd("C:/Users/Tomas/Documents/Skola/EPFL/Tex/PT_paper/JASA_resubmission/codes")
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source("library.R")
 library(ggplot2)
 library(gridExtra)
@@ -7,36 +7,15 @@ library(scatterplot3d)
 library(locfit)
 library(covsep)
 
-###################
-### death rates ###
-###################
-
-load("mortality_data.RData")
-
-testres <- empirical_bootstrap_test(data,2,4,"no") # 2,4=0.06; 4,2=0.07; 2,2=0.66; 4,4=0.076
-testres2 <- empirical_bootstrap_test2(data,2,4,"no") # 2,4=0.367 (up to 0.42); 4,2=0.397; 1,1=
-
-sdata <- data
-for(n in 1:32){
-  country <- data[n,,]
-  country <- melt(country)
-  smoo <- smooth.lf(x=as.matrix(country[,1:2]), y=country$value, kern = "epan",kt="prod",deg=1,alpha=c(0,2),maxk=2000)
-  sdata[n,,] <- matrix(smoo$y, ncol=40)
-}
-testress <- empirical_bootstrap_test(sdata,2,4,"no") # 2,4=0.29;
-
-
-
-
 empirical_bootstrap_test2 <- function (Data, L1 = 1, L2 = 1, studentize = "full", B = 1000,
-          verbose = TRUE)
+                                       verbose = TRUE)
 {
   N <- dim(Data)[1]
   d1 <- dim(Data)[2]
   d2 <- dim(Data)[3]
   # marginal.cov <- marginal_covariances(Data)
   proj.diff <- projected_differences2(Data, max(L1), max(L2),
-                                     with.asymptotic.variances = TRUE)
+                                      with.asymptotic.variances = TRUE)
   stat = array(NA, length(L1))
   for (k in 1:length(L1)) {
     l1 = L1[k]
@@ -69,7 +48,7 @@ empirical_bootstrap_test2 <- function (Data, L1 = 1, L2 = 1, studentize = "full"
     Data.boot <- Data[sample.int(N, N, replace = TRUE), ,
     ]
     proj.diff.boot = projected_differences2(Data.boot, max(L1),
-                                           max(L2), with.asymptotic.variances = TRUE)
+                                            max(L2), with.asymptotic.variances = TRUE)
     for (k in 1:length(L1)) {
       l1 = L1[k]
       l2 = L2[k]
@@ -142,3 +121,21 @@ projected_differences2 <- function (Data, l1 = 1, l2 = 1, with.asymptotic.varian
   ans = list(T.N = shift.stat, sigma.left = sigma.left, sigma.right = sigma.right)
   return(ans)
 }
+
+###################
+### death rates ###
+###################
+
+load("mortality_data.RData")
+
+testres <- empirical_bootstrap_test(data,2,4,"no") # 2,4=0.06; 4,2=0.07; 2,2=0.66; 4,4=0.076
+testres2 <- empirical_bootstrap_test2(data,2,4,"no") # 2,4=0.367 (up to 0.42); 4,2=0.397; 1,1=
+
+sdata <- data
+for(n in 1:32){
+  country <- data[n,,]
+  country <- melt(country)
+  smoo <- smooth.lf(x=as.matrix(country[,1:2]), y=country$value, kern = "epan",kt="prod",deg=1,alpha=c(0,2),maxk=2000)
+  sdata[n,,] <- matrix(smoo$y, ncol=40)
+}
+testress <- empirical_bootstrap_test(sdata,2,4,"no") # 2,4=0.29;

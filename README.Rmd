@@ -11,25 +11,33 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cerss
+# Covariance Estimation for Random Surfaces beyond Separability
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of cerss is to ...
+The purpose of this repo is to allow for reproducibility of the simulation studies and applications in papers
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+* Random Surface Covariance Estimation by Shifted Partial Tracing
+[[arXiv:1912.12870v2]](https://arxiv.org/abs/1912.12870) (aka separable-plus-banded model),
+* Principal Separable Component Analysis via the Partial Inner Product
+[[arXiv:2007.12175v1]](https://arxiv.org/abs/2007.12175) (aka separable component decomposition),
+* Inference and Computation for Sparsely Sampled Random Surfaces
+[[arXiv:2103.10077v1]](https://arxiv.org/abs/2103.10077) (aka sparsely observed separable model),
 
-```{r cars}
-summary(cars)
-```
+which constitute the doctoral thesis of the author.
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
+While the separable-plus-banded model and the separable component decomposition form the basis for the
+`surfcov` package available [here](https://github.com/TMasak/surfcov), which was created later (and hence
+is not used here, all the functions are wrapped in .R scripts here), this
+repo provides the code for reproducing the results in the aforementioned papers. A total majority of
+these were computed on a [cluster](https://www.epfl.ch/research/facilities/scitas/). The remainder of this
+page shows examples how to reproduce (chunks of) the results on a single machine, running
+R version 4.0.4 (2021-02-15).
 
-You can also embed plots, for example:
+There may be errors in the code (especially in parts not explicitly covered below). If a mistake is
+found, please contact the author at tomas[tecka]masak[zavinac]epfl[tecka]ch.
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
+### Separable-plus-banded Model
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub.
+In the respective folder [library.R](separable_plus_banded_model/library.R)
