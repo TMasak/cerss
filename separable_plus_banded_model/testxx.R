@@ -1,30 +1,3 @@
-setwd("C:/Users/Tomas/Documents/Skola/EPFL/Tex/PT_paper/JASA_resubmission/codes")
-source("library.R")
-library(ggplot2)
-library(gridExtra)
-library(reshape2)
-library(scatterplot3d)
-library(locfit)
-library(covsep)
-
-###################
-### death rates ###
-###################
-
-load("mortality_data.RData")
-
-testres <- empirical_bootstrap_test(data,2,4,"no") # 2,4=0.06; 4,2=0.07; 2,2=0.66; 4,4=0.076
-testres2 <- empirical_bootstrap_test2(data,2,4,"no") # 2,4=0.367 (up to 0.42); 4,2=0.397; 1,1=
-
-sdata <- data
-for(n in 1:32){
-  country <- data[n,,]
-  country <- melt(country)
-  smoo <- smooth.lf(x=as.matrix(country[,1:2]), y=country$value, kern = "epan",kt="prod",deg=1,alpha=c(0,2),maxk=2000)
-  sdata[n,,] <- matrix(smoo$y, ncol=40)
-}
-testress <- empirical_bootstrap_test(sdata,2,4,"no") # 2,4=0.29;
-
 
 
 

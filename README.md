@@ -37,5 +37,10 @@ tomas\[tecka\]masak\[zavinac\]epfl\[tecka\]ch.
 
 ### Separable-plus-banded Model
 
-In the respective folder
-[library.R](separable_plus_banded_model/library.R)
+In the respective folder,
+[library.R](separable_plus_banded_model/library.R) contains functions
+implementing all the algorithm from the
+[paper](https://arxiv.org/abs/1912.12870).
+
+Script [demo](separable_plus_banded_model/demo.R) shows how the
+functions can be used in form of a sample simulation run.
