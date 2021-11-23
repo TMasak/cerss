@@ -44,7 +44,31 @@ In the respective folder, [library.R](separable_plus_banded_model/library.R) con
 all the algorithm from the [paper](https://arxiv.org/abs/1912.12870).
 
 Script [demo](separable_plus_banded_model/demo.R) shows how the functions can be used in form of a sample
-simulation run. Most of the results in Section 5.1 (Simulation Study) of the [paper](https://arxiv.org/abs/1912.12870)
-corresponding to the sripts in the [separate folder](separable_plus_banded_model/scripts) were calculated on a cluster. The scripts are provided in the folder 
+simulation run.
 
+Most of the results in Section 5.1 (Simulation Study) of the [paper](https://arxiv.org/abs/1912.12870)
+corresponding to the sripts in the [separate folder](separable_plus_banded_model/scripts) were computed on a cluster. 
+The resulting data are stored in the [data folder](separable_plus_banded_model/data).
 
+To reproduce, for example, the data underlying the left panel of Figure 2 on a single machine, open
+[script_legendre_ar_buf.R](separable_plus_banded_model/scripts/script_legendre_ar_buf.R), comment out the
+following two lines at the bottom of the script
+
+``` r
+library(parallel)
+data <- mclapply(1:25,simulate,mc.cores=25)
+```
+
+and uncomment
+
+``` r
+# data <- lapply(1:25,simulate)
+```
+
+The script can then be run to reproduce
+[legendre_ar_buf.RData](separable_plus_banded_model/data/legendre_ar_buf.RData).
+
+The resulting data are in turn used by [results.R](separable_plus_banded_model/results.R) to create
+the left panel of Figure 2.
+
+TODO: I have apparently used the triangular kernel instead of the Epanechnikov kernel in the simulations

@@ -1,4 +1,4 @@
-# setwd("C:/Users/Tomas/Documents/Skola/EPFL/R/shifted_partial_tracing")
+# setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 # source("library_PIP.R")
 source("library.R")
 
@@ -73,5 +73,6 @@ simulate <- function(sim){
 
 library(parallel)
 data <- mclapply(1:25,simulate,mc.cores=25)
-# data <- lapply(1:25,simulate) # comment the previous line an uncomment this one if not running on a cluster
+# comment the previous line an uncomment the next one if not running on a cluster
+# data <- lapply(1:25,simulate)
 save(data, file="legendre_ar_buf.RData")
