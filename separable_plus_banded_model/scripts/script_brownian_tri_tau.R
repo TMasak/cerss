@@ -9,7 +9,7 @@ simulate <- function(sim){
   for(tau in 1:9){
     print(tau)
     delta <- 2*buf+1
-    Dat <- create_data(seed=17*sim,buf=buf,A1="brownian",A2="brownian",mask="triangular",snr=TAU[tau])
+    Dat <- create_data(seed=17*sim,buf=buf,A1="brownian",A2="brownian",mask="triangular",tau=0.5,snr=TAU[tau])
     C <- list(A1=Dat$A1, A2=Dat$A2, B=Dat$B)
     # true delta
     Chat <- estimate_all(Dat$Y,delta)

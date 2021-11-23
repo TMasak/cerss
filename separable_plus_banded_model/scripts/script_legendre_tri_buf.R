@@ -6,7 +6,7 @@ simulate <- function(sim){
   RES <- array(0,c(11,7))
     delta <- 0
     # Dat <- input[[sim]]
-    Dat <- create_data(seed=17*sim,buf=0,A1="legendre",A2="legendre",mask="tiangular",snr=3)
+    Dat <- create_data(seed=17*sim,buf=0,A1="legendre",A2="legendre",mask="tiangular",tau=0.5,snr=3)
     C <- list(A1=Dat$A1, A2=Dat$A2, B=array(0,c(1,1)))
     # true delta
     Chat <- estimate_all(Dat$X,delta)

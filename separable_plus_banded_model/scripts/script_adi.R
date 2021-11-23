@@ -3,7 +3,7 @@ source('library.R')
 
 spocitej <- function(sim){
   RES <- array(0,c(10,9))
-  for(buf in 1:10){
+  for(buf in 1:6){
     print(buf)
     delta <- 2*buf+1
     K <- delta*10
@@ -16,22 +16,21 @@ spocitej <- function(sim){
     Chat <- estimate_all(Dat$Y,0)
     RES[buf,2] <- frobenius_all(C,Chat)
     # CV
-    FitCV <- CV4(Dat$Y,10,floor(K/4),1)
+    FitCV <- CV(Dat$Y,10,floor(K/4),1)
     delta_hat <- min(which.max(FitCV[1,]/FitCV[2,]))
     Chat <- estimate_all(Dat$Y,delta_hat)
     RES[buf,3] <- frobenius_all(C,Chat)
-    # stability selection
-    Stab <- stability_selection(Dat$Y,floor(K/4),1)
-    delta_hat <- max_prominence2(Stab[3,])
-    Chat <- estimate_all(Dat$Y,delta_hat)
+    # best sepparable approximation
+    Est <- separable_expansion(Dat$Y,1)
+    Chat <- list(A1=drop(Est$sigma*Est$A), A2=drop(Est$A), B=array(0,c(max(1,delta),max(1,delta))))
     RES[buf,4] <- frobenius_all(C,Chat)
     # empirical covariance
     RES[buf,5] <- frobenius_empirical(Dat$Y,Dat$A1,Dat$A2,Dat$B)
     # oracle
-    Est <- estimate_separable(Dat$X)
-    Bhat <- as.matrix(toeplitz_average(Dat$W,delta))
-    Chat <- list(A1=Est$A1, A2=Est$A2, B=Bhat)
-    RES[buf,6] <- frobenius_all(C,Chat)
+    # Est <- estimate_separable(Dat$X)
+    # Bhat <- as.matrix(toeplitz_average(Dat$W,delta))
+    # Chat <- list(A1=Est$A1, A2=Est$A2, B=Bhat)
+    # RES[buf,6] <- frobenius_all(C,Chat)
     ### Inverse problem - making sure that everything is PSD
     theta <- 1e-5
     EIG <- eigen(C$A1)

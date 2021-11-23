@@ -43,4 +43,8 @@ implementing all the algorithm from the
 [paper](https://arxiv.org/abs/1912.12870).
 
 Script [demo](separable_plus_banded_model/demo.R) shows how the
-functions can be used in form of a sample simulation run.
+functions can be used in form of a sample simulation run. Most of the
+results in Section 5.1 (Simulation Study) of the
+[paper](https://arxiv.org/abs/1912.12870) corresponding to the sripts in
+the [separate folder](separable_plus_banded_model/scripts) were
+calculated on a cluster. The scripts are provided in the folder

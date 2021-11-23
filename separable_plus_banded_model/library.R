@@ -1110,17 +1110,17 @@ create_data <- function(seed=517, buf=0, N=300, K=100, A1="legendre", A2="legend
 ################
 
 papcol <- function(i){
-  bar <- c("black","goldenrod1","blue","limegreen","red", "violet","forestgreen")
+  bar <- c("forestgreen","goldenrod1","blue","blue","brown", "violet","red")
   return(bar[i])
 }
 
 pappch <- function(i){
-  bar <- c(1,6,4,0,5,2,3)
+  bar <- c(1,6,4,4,0,5,2)
   return(bar[i])
 }
 
 paplty <- function(i){
-  bar <- c(4,2,3,1,5,6,4)
+  bar <- c(4,2,3,3,1,5,6)
   return(bar[i])
 }
 
