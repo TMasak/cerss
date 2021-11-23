@@ -35,7 +35,7 @@ There may be errors in the code (especially in parts not explicitly
 covered below). If a mistake is found, please contact the author at
 tomas\[tecka\]masak\[zavinac\]epfl\[tecka\]ch.
 
-### Separable-plus-banded Model
+## Separable-plus-banded Model
 
 In the respective folder,
 [library.R](separable_plus_banded_model/library.R) contains functions
@@ -45,7 +45,9 @@ implementing all the algorithm from the
 Script [demo](separable_plus_banded_model/demo.R) shows how the
 functions can be used in form of a sample simulation run.
 
-Most of the results in Section 5.1 (Simulation Study) of the
+### Simulation Study
+
+Most of the results in Section 5.1 of the
 [paper](https://arxiv.org/abs/1912.12870) corresponding to the sripts in
 the [separate folder](separable_plus_banded_model/scripts) were computed
 on a cluster. The resulting data are stored in the [data
@@ -72,7 +74,28 @@ The script can then be run to reproduce
 
 The resulting data are in turn used by
 [results.R](separable_plus_banded_model/results.R) to create the left
-panel of Figure 2.
+panel of Figure 2, apart from the bias curve. All the bias curves are
+computed separately (and locally) using
+[script\_norms.R](separable_plus_banded_model/script_norms.R)
 
-TODO: I have apparently used the triangular kernel instead of the
-Epanechnikov kernel in the simulations
+TODO: We have apparently used the triangular kernel instead of the
+Epanechnikov kernel in the respective simulations. Of course, this does
+not affect the results very much (differences should not be visible by
+eye), but the next version of the paper should mention the triangular
+kernel instead of Epanechnikov.
+
+### Mortality Data Analysis
+
+The raw data were downloaded from the [Human Mortality
+Database](https://www.mortality.org/) on 12/4/209/ The .txt files were
+saved in a folder, labeled “death\_rates”, and used
+[mortality\_data\_read.R](separable_plus_banded_model/mortality_data_read.R)
+to produce `mortality_data.RData`. As requested by the Human Mortality
+Database, we do not distribute the data set, hence users have to go
+through this process themselves.
+
+After `mortality_data.RData` is created,
+[mortality\_analysis.R](separable_plus_banded_model/mortality_analysis.R)
+can be used to reproduce the graphical outputs of Section 5.2 of the
+paper. The empirical bootstrap tests are conducted in a separate script:
+[testing.R](separable_plus_banded_model/testing.R).
