@@ -104,4 +104,4 @@ paper. The empirical bootstrap tests are conducted in a separate script:
 ## Separable Component Decomposition
 
 All the results with the exception of runtimes
-([script\_fourier\_runtimes.R](separable_component_decomposition/script_fourier_runtimes.R))
+([script\_fourier\_runtimes.R](separable_component_decomposition/script_fourier_times.R))
