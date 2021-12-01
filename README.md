@@ -23,10 +23,11 @@ which constitute the doctoral thesis of the author.
 
 While the separable-plus-banded model and the separable component
 decomposition form the basis for the `surfcov` package available
-[here](https://github.com/TMasak/surfcov), which was created later (and
-hence is not used here, all the functions are wrapped in .R scripts
-here), this repo provides the code for reproducing the results in the
-aforementioned papers. A total majority of these were computed on a
+[here](https://github.com/TMasak/surfcov), the package was created only
+later. The simulation studies in the paper are instead produced by the
+scripts included here, which contain all the functions. As such, this
+repo provides the code for reproducing the results in the aforementioned
+papers. A total majority of these were computed on a
 [cluster](https://www.epfl.ch/research/facilities/scitas/). The
 remainder of this page shows examples how to reproduce (chunks of) the
 results on a single machine, running R version 4.0.4 (2021-02-15).
@@ -39,7 +40,7 @@ tomas\[tecka\]masak\[zavinac\]epfl\[tecka\]ch.
 
 In the respective folder,
 [library.R](separable_plus_banded_model/library.R) contains functions
-implementing all the algorithm from the
+implementing all the algorithms from the
 [paper](https://arxiv.org/abs/1912.12870).
 
 Script [demo](separable_plus_banded_model/demo.R) shows how the
@@ -48,9 +49,9 @@ functions can be used in form of a sample simulation run.
 ### Simulation Study
 
 Most of the results in Section 5.1 of the
-[paper](https://arxiv.org/abs/1912.12870) corresponding to the sripts in
-the [separate folder](separable_plus_banded_model/scripts) were computed
-on a cluster. The resulting data are stored in the [data
+[paper](https://arxiv.org/abs/1912.12870) corresponding to the scripts
+in the [separate folder](separable_plus_banded_model/scripts) were
+computed on a cluster. The resulting data are stored in the [data
 folder](separable_plus_banded_model/data).
 
 To reproduce, for example, the data underlying the left panel of Figure
@@ -88,14 +89,16 @@ kernel instead of Epanechnikov.
 
 The raw data were downloaded from the [Human Mortality
 Database](https://www.mortality.org/) on 12/4/209/ The .txt files were
-saved in a folder, labeled “death\_rates”, and used
+saved in a folder, labeled “death\_rates”. Then, the script
 [mortality\_data\_read.R](separable_plus_banded_model/mortality_data_read.R)
-to produce `mortality_data.RData`. As requested by the Human Mortality
-Database, we do not distribute the data set, hence users have to go
-through this process themselves.
+was used to produce `mortality_data.RData`. As requested by the Human
+Mortality Database, we do not distribute the data set, hence users have
+to go through this process themselves.
 
 After `mortality_data.RData` is created,
 [mortality\_analysis.R](separable_plus_banded_model/mortality_analysis.R)
 can be used to reproduce the graphical outputs of Section 5.2 of the
 paper. The empirical bootstrap tests are conducted in a separate script:
 [testing.R](separable_plus_banded_model/testing.R).
+
+## Separable Component Decomposition
