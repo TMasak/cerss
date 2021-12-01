@@ -102,3 +102,6 @@ paper. The empirical bootstrap tests are conducted in a separate script:
 [testing.R](separable_plus_banded_model/testing.R).
 
 ## Separable Component Decomposition
+
+All the results with the exception of runtimes
+([script\_fourier\_runtimes.R](separable_component_decomposition/script_fourier_runtimes.R))
