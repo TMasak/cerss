@@ -7,7 +7,7 @@
 <!-- badges: end -->
 
 The purpose of this repo is to allow for reproducibility of the
-simulation studies and applications in papers
+simulation studies and real data applications in papers
 
 -   Random Surface Covariance Estimation by Shifted Partial Tracing
     [\[arXiv:1912.12870v2\]](https://arxiv.org/abs/1912.12870) (a.k.a.
