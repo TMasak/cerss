@@ -10,13 +10,13 @@ The purpose of this repo is to allow for reproducibility of the
 simulation studies and applications in papers
 
 -   Random Surface Covariance Estimation by Shifted Partial Tracing
-    [\[arXiv:1912.12870v2\]](https://arxiv.org/abs/1912.12870) (aka
+    [\[arXiv:1912.12870v2\]](https://arxiv.org/abs/1912.12870) (a.k.a.
     separable-plus-banded model),
 -   Principal Separable Component Analysis via the Partial Inner Product
-    [\[arXiv:2007.12175v1\]](https://arxiv.org/abs/2007.12175) (aka
+    [\[arXiv:2007.12175v1\]](https://arxiv.org/abs/2007.12175) (a.k.a.
     separable component decomposition),
 -   Inference and Computation for Sparsely Sampled Random Surfaces
-    [\[arXiv:2103.10077v1\]](https://arxiv.org/abs/2103.10077) (aka
+    [\[arXiv:2103.10077v1\]](https://arxiv.org/abs/2103.10077) (a.k.a.
     sparsely observed separable model),
 
 which constitute the doctoral thesis of the author.
@@ -79,6 +79,11 @@ panel of Figure 2, apart from the bias curve. All the bias curves are
 computed separately (and locally) using
 [script\_norms.R](separable_plus_banded_model/script_norms.R)
 
+A similar workflow can be followed to re-create any Figure in the paper.
+Check in [results.R](separable_plus_banded_model/results.R) which data
+files are needed for the plot. The scripts producing the data have
+similar names to the data files themselves.
+
 TODO: We have apparently used the triangular kernel instead of the
 Epanechnikov kernel in the respective simulations. Of course, this does
 not affect the results very much (differences should not be visible by
@@ -103,5 +108,25 @@ paper. The empirical bootstrap tests are conducted in a separate script:
 
 ## Separable Component Decomposition
 
-All the results with the exception of runtimes
+In the respective folder,
+[library\_PIP.R](separable_component_decomposition/library_PIP.R)
+contains functions implementing all the algorithms from the
+[paper](https://arxiv.org/abs/2007.12175).
+
+Script [demo](separable_plus_banded_model/demo.R) shows how the
+functions can be used in form of a sample simulation run.
+
+### Simulation Study
+
+All the resulting data with the exception of runtimes
 ([script\_fourier\_runtimes.R](separable_component_decomposition/script_fourier_times.R))
+were run on a cluster.
+
+To reproduce the data, follow the workflow above.
+
+To re-create the plots in the paper, use
+[plots.R](separable_component_decomposition/plots.R).
+
+## Sparsely Observed Random Surfaces
+
+This is not a part of the `surfcov` package.
