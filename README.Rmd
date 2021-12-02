@@ -139,6 +139,20 @@ in this folder using [results.R](sparsely_observed_random_surfaces/results.R)
 
 ### Implied Volatility Surfaces
 
+This data set was kindly offered to us by [DeltaNeutral](http://www.deltaneutral.com/). The data
+can be accessed by filling out a form on [this webpage](https://www.historicaloptiondata.com/content/free-data).
+The data come in form of a `.csv` file, and the different scripts utilize directly this spreadsheet.
+
+The script [qualitative_script.R](sparsely_observed_random_surfaces/implied_volatility/qualitative_script.R)
+produces [TRout.RData](sparsely_observed_random_surfaces/implied_volatility/TRout.RData),
+which is in turn used by [results.R](sparsely_observed_random_surfaces/implied_volatility_surfaces/iv_results.R)
+to product figures in Section 5 of the paper.
+
+The script [k_fold_serial_foreach_revised.R](sparsely_observed_random_surfaces/implied_volatility/k_fold_serial_foreach_revised.R) was run on a cluster (in the serial mode) to produce
+[grid20.Rdata](sparsely_observed_random_surfaces/implied_volatility/grid20.Rdata), which is in turn included into
+[TRout.RData](sparsely_observed_random_surfaces/implied_volatility/TRout.RData) by
+[quantitative_script.R](sparsely_observed_random_surfaces/implied_volatility/quantitative_script.R).
+
 
 
 
