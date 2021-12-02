@@ -114,8 +114,30 @@ To re-create the plots in the paper, use [plots.R](separable_component_decomposi
 
 ## Sparsely Observed Random Surfaces
 
-This is not a part of the `surfcov` package. 
+Unlike the previous methodologies, this is not a part of the `surfcov` package.
+This is because while the previous two parts were
+completely self-contained, utilizing only packages in the base R distribution, the codes
+in this section require some additional packages such as
+[np](https://cran.r-project.org/web/packages/fdapace/index.html)
+and [fdapace](https://cran.r-project.org/web/packages/np/index.html),
+and some modifications of their functions.
 
+In the respective folder [library_kronPCA.R](sparsely_observed_random_surfaces/library_kronPCA.R) and
+[library_PIP.R](sparsely_observed_random_surfaces/library_smooth.R) contain all the
+functions implementing methodologies from the paper.
+
+Script [demo](sparsely_observed_random_surfaces/demo.R) shows how the functions can be used in form of a sample
+simulation run.
+
+### Simulation Study
+
+Different scripts generate data of the same name appended with "_data". Those scripts were
+run on a cluster. To reproduce the data, run the scripts using the workflow described above.
+
+All simulation-based figures in the paper and in the supplement can be recreated from the data
+in this folder using [results.R](sparsely_observed_random_surfaces/results.R)
+
+### Implied Volatility Surfaces
 
 
 
